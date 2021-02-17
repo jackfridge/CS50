@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <!-- Required meta tags copied from Bootstrap's website -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Import icon file (top of page) -->
+        <!-- TODO create icon! -->
+        <link href="/static/favicon.ico" rel="icon">
+
+        <!-- Import CSS file -->
+        <link href="/static/styles.css" rel="stylesheet">
+        
+        <!-- Import bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <title>CS50 Final: {% block title %}{% endblock %}</title>
+
+    </head>
+
+    <body>
+        
+        <!-- Navigation bar for every page -->
+        <!-- TODO : add top bar animation when scrolls down (like color from white to black and gets smaller to better see main cont)-->
+        <nav id="nav">
+            
+            <!-- TODO This div element (main navbar) is collapsible if screen is too small (hamburger menu) -->
+            <div>
+                <!-- TODO Big icon for page on top left (add logo/text/etc for each page) refers to home page "/"-->
+                <a href="/" class="main_button">[CS50 Final]</a>
+                <a href="/" class="nav_button">Home</a>
+                <a href="/browse" class="nav_button">Browse</button>
+                <a href="/contact" class="nav_button">Contact us</button>
+                
+                {%if session.user_id %}
+                    <!-- TODO Separate log out button to right (add CSS property and different class for this nav item!) -->
+                    <a href="/logout" class="nav_button">Log Out</a>
+                {% else %}
+                    <!-- TODO ADD CONDITIONS TO DISPLAY these buttons according to login info -->
+                    <a href="/register" class="nav_button nav_right">Register</a>
+                    <a href="/login" class="nav_button nav_right">Log In</a>
+                {% endif %}
+            </div>
+
+        </nav>
+        
+        <!-- TODO Insert alert area for more stylish way to alert user -->
+            <header>
+                <div role="alert">
+
+                </div>
+            </header>
+
+        <main>
+            {% block main %}{% endblock %}
+        </main>
+        
+        <footer id="footer">
+            <div id="left_footer">
+                <b>Links</b>
+                <hr>
+                <p><a href="https://cs50.harvard.edu/">Check out CS50</a></p>
+                <p><a href="https://github.com/jackfridge">My Github page</a></p>
+            </div>
+
+            <div id="bottom_footer">
+                Jacques Frigault &#169; 2021, Some Rights Reserved
+            </div>
+        </footer>
+
+        <script>
+            // Adjust navbar height to adapt to scrolling
+            window.onscroll = function() {
+                if (document.documentElement.scrollTop > 50) {
+                    document.querySelector("nav").style.padding = "5px 25px 8px 20px";
+                    document.querySelector("nav").style.backgroundColor = "rgba(0, 0, 0, 1)";
+                    document.querySelector(".main_button").style.fontSize = "26px";
+                    document.querySelector(".main_button").style.fontWeight = "400";
+                    document.querySelector(".main_button").innerHTML = "[CS50]";
+                }
+                else {
+                    document.querySelector("nav").style.padding = "30px 50px 30px 50px";
+                    document.querySelector("nav").style.backgroundColor = "rgba(100, 100, 100, 0.5)";
+                    document.querySelector(".main_button").style.fontSize = "48px";
+                    document.querySelector(".main_button").style.fontWeight = "500";
+                    document.querySelector(".main_button").innerHTML = "[CS50 Final]";
+                }
+            }
+        </script>
+
+        <!-- IMPORTED SCRIPTS: jQuery first, then Popper.js, then Bootstrap JS (copied 3 lines from Bootstrap's website) -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    </body>
+</html>

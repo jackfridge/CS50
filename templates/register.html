@@ -1,0 +1,127 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block main %}
+<form id="form" name="register" action="/register" method="POST">
+    <h2 name="registration page" style="font-size: 42px">Registration</h2>
+    <hr>
+
+    <div>
+        <label for="username">Username</label></br>
+        <input id="username" name="username" class="input_field" type="text" placeholder="Enter username here" autofocus autocomplete="off" required></br>
+    </div>
+
+    <div>
+        <label for="password">Password</label></br>
+        <input id="password" name="password" class="input_field" type="password" placeholder="Enter password here" autocomplete="off" required></br>
+    </div>
+
+    <div>
+        <label for="confirmation">Password confirmation</label></br>
+        <input id="confirmation" name="confirmation" class="input_field" type="password" placeholder="Confirm password" autocomplete="off" required></br>
+        <div id="password_validation">
+            <h6>Your password must respect the following:</h6>
+            <p id="pass_match">Passwords must <b>match</b></p>
+            <p id="pass_lowercase">At least one <b>lowercase</b> letter</p>
+            <p id="pass_uppercase">At least one <b>capital</b> letter</p>
+            <p id="pass_number">At least one <b>number</b></p>
+            <p id="pass_length">Minimum of <b>8 characters</b></p>
+        </div>
+    </div>
+
+    <div>
+        <label for="email">E-mail</label></br>
+        <input id="email" name="email" class="input_field" type="email" placeholder="Enter e-mail here" required></br>
+    </div>
+
+    <div>
+        <input type="submit" id="submit" name="submit" value="Register">
+    </div>
+
+</form>
+
+<script>
+    // Make script to check if username, password and email are valid inputs, if not, alert an error
+    function validate (elem1, elem2) {
+        let pass_match = document.querySelector("#pass_match");
+        let pass_lowercase = document.querySelector("#pass_lowercase");
+        let pass_uppercase = document.querySelector("#pass_uppercase");
+        let pass_number = document.querySelector("#pass_number");
+        let pass_length = document.querySelector("#pass_length");
+
+        // Var to store numbers, uppeer and lower case chars to match to passwords
+        let num = /[0-9]/g;
+        let upper = /[A-Z]/g;
+        let lower = /[a-z]/g;
+        
+        // Compare fields to insure matching passwords
+        if (elem1.value == elem2.value) {
+            // If user erases everything in field, return text colors to original black
+            if (elem1.value === "" && elem2.value === "") {
+                pass_match.style.color = "black";
+            }
+            else {
+                pass_match.style.color = "green";
+            }
+        }
+        else {
+            pass_match.style.color = "red";
+        }
+        
+        // Compare fields for lowercase
+        checkmatch(elem1, elem2, lower, pass_lowercase);
+
+        // Compare fields for uppercase letter
+        checkmatch(elem1, elem2, upper, pass_uppercase);
+
+        // Compare fields for number
+        checkmatch(elem1, elem2, num, pass_number);
+
+        // Compare both fields to insure proper password length
+        if (elem1.value.length >= 8 && elem2.value.length >= 8) {
+            pass_length.style.color = "green";
+        }
+        else {
+            if (elem1.value === "" && elem2.value === "") {
+                pass_length.style.color = "black";
+            }
+            else {
+                pass_length.style.color = "red";
+            }
+        }
+    }
+
+    // Check 2 elements if they contain characters in "compare", changing the id parameter's style
+    function checkmatch (elem1, elem2, compare, id) {
+        if (elem1.value.match(compare) && elem2.value.match(compare)) {
+            id.style.color = "green";
+        }
+        else {
+            if (elem1.value === "" && elem2.value === "") {
+                id.style.color = "black";
+            }
+            else {
+                id.style.color = "red";
+            }
+        }
+    }
+
+    // Once the DOM is loaded, complete password checking once the user starts typing passwords
+    document.addEventListener("DOMContentLoaded", function() {
+        let pass1 = document.querySelector("#password");
+        let pass2 = document.querySelector("#confirmation");
+
+        pass1.addEventListener("input", function() {
+            validate(pass1, pass2);
+        });
+
+        pass2.addEventListener("input", function() {
+            validate(pass1, pass2);
+        });
+    });
+
+</script>
+{% endblock %}

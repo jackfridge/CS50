@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Log In
+{% endblock %}
+
+{% block main %}
+<form id="form" name="login" action="/login" method="POST">
+    <h2 name="login page" style="font-size: 42px">Log In</h2>
+    <hr>
+
+    <div>
+        <label for="username">Username</label></br>
+        <input id="username" name="username" class="input_field" type="text" placeholder="Enter username here" autofocus autocomplete="off" required></br>
+    </div>
+
+    <div>
+        <label for="password">Password</label></br>
+        <input id="password" name="password" class="input_field" type="password" placeholder="Enter password here" autocomplete="off" required></br>
+    </div>
+
+    <div>
+        <input type="submit" id="submit" name="submit" value="Login">
+    </div>
+
+</form>
+{% endblock %}
