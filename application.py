@@ -50,15 +50,10 @@ db = db_conn.cursor()
 def index():
     return render_template("index.html")
 
+
 @app.route("/browse")
 def browse():
     return render_template("browse.html")
-
-
-@app.route("/contact")
-@login_required
-def contact():
-    return render_template("contact.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
