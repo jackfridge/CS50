@@ -46,12 +46,12 @@ db_conn = sqlite3.connect("database.db", check_same_thread=False)
 db = db_conn.cursor()
 
 @app.route("/")
-@login_required
 def index():
     return render_template("index.html")
 
 
 @app.route("/browse")
+@login_required
 def browse():
     return render_template("browse.html")
 

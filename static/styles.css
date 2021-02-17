@@ -9,6 +9,7 @@ body {
 
 h2 {
     text-align: center;
+    font-size: 42px;
     padding-bottom: 15px;
     color: rgb(45, 45, 45);
 }
@@ -46,13 +47,16 @@ nav {
     position: fixed;
     font-weight: 500;
     transition: 0.4s;
+    z-index: 5;
 }
 
 .main_button {
-    font-size: 48px;
+    font-size: 42px;
     font-weight: 500;
     margin-right: 30px;
     transition: 0.4s;
+    display: inline-block;
+    text-decoration: none;
 }
 
 .main_button:hover {
@@ -63,23 +67,50 @@ nav {
     color: white !important;
     font-size: 18px;
     padding-right: 15px;
+    text-decoration: none;
+}
+
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+
+.flex-column {
+    max-width: 25%;
+    flex: 25%;
+    padding: 4px;
+}
+
+.flex-column img {
+    opacity: 0.6;
+    width: 100%;
+    vertical-align: middle;
+    transition: 0.3s;
+    padding-bottom: 6px;
+}
+
+.flex-column img:hover {
+    opacity: 1;
+    transition: 0.3s;
 }
 
 footer {
     background-color: rgba(0, 0, 0, 0.9);
-    padding: 4% 3% 1% 3%;
+    padding: 3% 3% 1% 3%;
     width: 100%;
     min-width: 500px;
 }
 
 footer p {
     line-height: 0.7;
-    padding-left: 4%;
+    padding-left: 3%;
     color: white;
 }
 
 footer b {
-    margin-left: 2%;
+    margin-left: 1%;
+    margin-top: 2%;
     color: white;
 }
 
@@ -107,11 +138,42 @@ footer b {
     max-width: 700px;
 }
 
+#browse {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 250px;
+    margin-bottom: 150px;
+    background-color: rgba(173, 216, 230, 0.9);
+    border-radius: 10px;
+    text-align: left;
+    padding: 45px 55px 45px 55px;
+    font-size: 18px;
+    z-index: 1;
+    min-width: 400px;
+    max-width: 1200px;
+}
+
 /* When width's maximum reached, change margins to keep centered registration form*/
 @media (max-width: 1150px) {
     #form {
         margin-left: 20%;
         margin-right: 20%;
+    }
+    
+
+}
+
+@media (max-width: 900px) {
+    .flex-column {
+        max-width: 50%;
+        flex: 50%;
+    }
+}
+
+@media (max-width: 1500px) {
+    #browse {
+        margin-left: 10%;
+        margin-right: 10%;
     }
 }
 
