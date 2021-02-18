@@ -21,3 +21,19 @@ I implemented password strength caracteristics to respect.
 
 My CSS is where I learned the most, with Javascript to animate the webpage and transitions to ensure a smooth browsing experience.
 Most of the back-end python was very similar to what we learned and did not take up most of my time compared to HTML, CSS and Javscript.
+
+I based my code on the finance problemset, where we learned how to use Flask and Jinja as a
+framework with Python, SQL and Javascript.
+
+I started to get used to Git and GitHub, and I'm still learning how to use it, but in VS Code,
+extensions made it easier to integrate into my workspace. My GitHub page also hosts the source
+code for my project, so I can show it or work on it anywhere I am with a computer.
+
+I focused on CSS and Javascript, such as window scrolling effects, dynamic opacity for highlighting
+images on the main browse page, and smooth transitions on buttons such as the login/register buttons
+or simply hyperlinks.
+
+In the backend, I also used styling to implement a password strength element to respect when registering.
+Users have to use at least 1 upper and lowercase letter, one number, and the password must be at least
+8 characters long. Any of these not respected will result in a red error message, dynamically generated
+according to which caracteristic was not respected.
