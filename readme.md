@@ -37,3 +37,8 @@ In the backend, I also used styling to implement a password strength element to 
 Users have to use at least 1 upper and lowercase letter, one number, and the password must be at least
 8 characters long. Any of these not respected will result in a red error message, dynamically generated
 according to which caracteristic was not respected.
+
+To further improve this website, one could implement an automatic email for confirming an email address.
+On top of this, we could implement an automatic email subscription for users if there are any updates.
+We could also implement a store to buy or ask for quotes that would be sent to the user's email.
+Certain prints or merchandise could be implemented as an online store to purchase certain items.
