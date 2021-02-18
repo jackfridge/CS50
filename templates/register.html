@@ -8,7 +8,19 @@ Register
 <form id="form" name="register" action="/register" method="POST">
     <h2 name="registration page">Registration</h2>
     <hr>
-
+    
+    {% if msg %}
+    <div class="feedback" id="failure">
+        {{ msg }}
+    </div>
+    {% endif %}
+    
+    {% if reg %}
+    <div class="feedback" id="success">
+        {{ reg }}
+    </div>
+    {% endif %}
+    
     <div>
         <label for="username">Username</label></br>
         <input id="username" name="username" class="input_field" type="text" placeholder="Enter username here" autofocus autocomplete="off" required></br>
@@ -33,8 +45,16 @@ Register
     </div>
 
     <div>
-        <label for="email">E-mail</label></br>
-        <input id="email" name="email" class="input_field" type="email" placeholder="Enter e-mail here" required></br>
+        <label for="email">E-mail (optional) *</label></br>
+        <input id="email" name="email" class="input_field" type="email" placeholder="Enter e-mail here"></br>
+    </div>
+
+    <div>
+        <p style="font-size: 14px; text-align: justify; padding-left: 10px; padding-right: 10px">
+            <i>* In a real website, it would be written that giving an email would be consent
+            to receive updates via email. In this mock website, there will not be any 
+            updates sent.</i>
+        </p>
     </div>
 
     <div>

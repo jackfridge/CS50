@@ -7,7 +7,54 @@ Home
 {% block main %}
 <div id="browse">
     <h2>Welcome to my CS50 Final Project!</h2>
-    <hr>
+    <hr></br>
     
+    {% if msg %}
+    <div style="margin-left: 45px; margin-right: 45px" class="feedback" id="failure">
+        {{ msg }}
+    </div>
+    {% endif %}
+    
+    {% if reg %}
+    <div style="margin-left: 45px; margin-right: 45px" class="feedback" id="success">
+        {{ reg }}
+    </div>
+    {% endif %}
+
+    <p>
+        This website was made as part of the final assignment for CS50's Introduction
+        to Computer Science from HarvardX on edX. Prior to CS50, I haven't had much
+        programming experience, so this course has been such a wonderful journey and 
+        I'm truly grateful for the structure of the course and what I have learned.
+    </p>
+    <p>
+        This web page was made with a Flask application for user login, but my
+        main goal in this project was to improve and add many CSS elements and
+        improve my styling in general on the front end.
+    </p>
+    <p>
+        The second part of this project was to get used to coding in an interface
+        outside of the training wheels of CS50 IDE. As professor David Malan
+        suggested, since the real world will not have the training wheels we
+        have been relying on, getting out of out comfort zone is the best
+        way to learn. I have therefore used VS Code for the entirety of my project.
+    </p>
+    <p>
+        Users can register and login (with certain added features like password
+        strength rules) to view the gallery of photos (royalty free images).
+        In a real photo store, users might be able to place orders for this kind 
+        of website, but my main focus was CSS, so the browse section has a gallery 
+        with CSS effects for seamless viewing of pictures. On top of this, I have
+        adapted my page to be as mobile-friendly as much as possible, using CSS as well.
+    </p>
+    <p>
+        I hope you enjoy this website as much as I had fun learning CSS and 
+        adding to my web programming knowledge. The source code for this website is
+        available on <a style="color:rgb(0, 190, 0) !important" href="https://github.com/jackfridge/CS50">my GitHub page</a>.
+    </p>
+    <p>
+        Thank you,
+    </p>
+    <p>Jacques</p>
 </div>
 {% endblock %}

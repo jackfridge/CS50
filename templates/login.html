@@ -9,6 +9,18 @@ Log In
     <h2 name="login page" style="font-size: 42px">Log In</h2>
     <hr>
 
+    {% if msg %}
+    <div class="feedback" id="failure">
+        {{ msg }}
+    </div>
+    {% endif %}
+    
+    {% if reg %}
+    <div class="feedback" id="success">
+        {{ reg }}
+    </div>
+    {% endif %}
+
     <div>
         <label for="username">Username</label></br>
         <input id="username" name="username" class="input_field" type="text" placeholder="Enter username here" autofocus autocomplete="off" required></br>

@@ -68,29 +68,26 @@ def login():
         password = request.form.get("password")
 
         db.execute("SELECT * FROM users WHERE username=?", (user,))
-        user_check = db.fetchall()
-
-        if user_check == None:
-            print("no such user")
-            return redirect("/")
-
+        user_check = db.fetchone()
+        print(user_check)
         # Make sure the username is valid
-        if len(user_check) != 1:
+        if user_check == None:
             # This username is invalid
             print("username does not exist")
-            return redirect("/")
+            return render_template("login.html", msg="This username does not exist")
 
         else:
             # Validate password hashes match
-            hash = user_check[0][2]
+            hash = user_check[2]
+            print(user_check[2])
             if check_password_hash(hash, password):
                 # Successful login
-                session["user_id"] = user_check[0][0]
-                return redirect("/")
+                session["user_id"] = user_check[0]
+                return render_template("index.html", reg="You have successfully logged in!")
 
             else:
                 # Wrong password was input
-                return redirect("/")
+                return render_template("login.html", msg="Wrong password")
     else:
         return render_template("/login.html")
 
@@ -112,34 +109,44 @@ def register():
         confirmation = request.form.get("confirmation")
         email = request.form.get("email")
 
-        if not user or not password or not confirmation or not email:
+        if not user or not password or not confirmation:
             # Invalid input, must type something out
-            print("invalid input")
-            return redirect("/")
+            return render_template("register.html", msg="Please verify you filled out the required fields")
 
         if password != confirmation:
-            print("passwords don't match")
             # Passwords don't match
-            return redirect("/")
+            return render_template("register.html", msg="Passwords do not match")
+
+        # Make sure the password matches all required strength parameters
+        if (any(x.islower() for x in password) == False):
+            return render_template("register.html", msg="Password must contain at least 1 lowercase letter")
+
+        if (any(x.isupper() for x in password) == False):
+            return render_template("register.html", msg="Password must contain at least 1 uppercase letter")
+        
+        if (any(x.isdigit() for x in password) == False):
+            return render_template("register.html", msg="Password must contain at least 1 number")
+        
+        if (len(password) < 8):
+            return render_template("register.html", msg="Password must be at least 8 characters long")
         
         # Variable to check if anything returns for the input username
-        db.execute("SELECT * FROM users")
-        check_user = db.fetchall()
+        db.execute("SELECT * FROM users WHERE username=?", (user,))
+        check_user = db.fetchone()
         
         # Make sure the username doesn't yet exist in db
-        if len(check_user) != 0:
+        if check_user != None:
             # This username exists (export to HTML?)
-            print("username exists already")
-            return redirect("/register")
+            return render_template("register.html", msg="This username already exists")
         
         # Create user in db
         else:
             db.execute("INSERT INTO users (username, password_hash, email) VALUES (?, ?, ?)", (user, generate_password_hash(password), email))
-            # TODO commit sql INSERT into db
+            # Commit sql INSERT into db file
             db_conn.commit()
 
             # Redirect to login page
-            return redirect("/login")
+            return render_template("register.html", reg="You have successfully registered!")
 
     else:
         return render_template("register.html")

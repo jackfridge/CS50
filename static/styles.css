@@ -153,14 +153,19 @@ footer b {
     max-width: 1200px;
 }
 
+#browse p {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 30px;
+    text-align: justify;
+}
+
 /* When width's maximum reached, change margins to keep centered registration form*/
 @media (max-width: 1150px) {
     #form {
         margin-left: 20%;
         margin-right: 20%;
     }
-    
-
 }
 
 @media (max-width: 900px) {
@@ -221,4 +226,26 @@ footer b {
 #submit:hover {
     background-color: rgb(40, 126, 40);
     transition: 0.3s;
+}
+
+img {
+    border-radius: 3px;
+}
+
+.feedback {
+    border-radius: 5px;
+    padding: 10px;
+    padding-left: 15px;
+    margin-bottom: 15px;
+    margin-top: 25px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+#failure {
+    background-color: rgba(255, 0, 0, 0.6);
+}
+
+#success {
+    background-color: rgba(0, 255, 0, 0.6);
 }
