@@ -1,5 +1,5 @@
 # My CS50 final project.
-### Video demo: 
+### Video demo: https://youtu.be/biHFDKGOZq0
 ### Web app using Flask with Python, SQL and Javascript: make-shift photography website where users can view prints.
 
 Features included in this web app:
